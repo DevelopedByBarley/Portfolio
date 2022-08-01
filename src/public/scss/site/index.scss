@@ -1,0 +1,19 @@
+.index-container {
+  #profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    #profile-image {
+      img {
+        width: 60%;
+        max-width: 350px;
+        border-radius: 100%;
+        -webkit-box-shadow: 0px 2px 50px 5px rgba(108, 0, 249, 0.73);
+        box-shadow: 0px 2px 50px 5px rgba(108, 0, 249, 0.73);
+      }
+    }
+    }
+}
+

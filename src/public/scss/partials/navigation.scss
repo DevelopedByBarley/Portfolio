@@ -1,0 +1,16 @@
+header {
+  height: 40px;
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    a {
+      text-decoration: none;
+      padding: 0.5rem;
+      font-family: $textFont;
+      font-weight: bolder;
+      color: $lightTextColor;
+    }
+  }
+}
+
