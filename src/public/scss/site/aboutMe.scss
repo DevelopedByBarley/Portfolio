@@ -1,8 +1,99 @@
 .aboutMe-container {
-  transition: all .4s ease-in-out;
+  transition: all 0.4s ease-in-out;
   background: $bgColor;
   position: absolute;
   height: 100vh;
   width: 100%;
+  max-width: 1920px;
+  #profile {
+    #me {
+      text-align: center;
+      #profile-image {
+        display: flex;
+        justify-content: center;
+        img {
+          width: 150px;
+          border-radius: 100%;
+          box-shadow: $boxShadow;
+          margin: 2rem;
+          transition: all 0.4s ease-in-out;
+        }
+      }
+      #profile-image img:hover {
+        transform: scale(1.05);
+      }
+
+      h1 {
+        color: $lightTextColor;
+        margin: 0.5rem;
+        font-family: $headingFont;
+        font-size: 3rem;
+      }
+      h3 {
+        font-family: $textFont;
+        color: $purple;
+      }
+      hr {
+        border: 0.5px solid $purple;
+        width: 40%;
+        margin: 1rem auto;
+      }
+    }
+    #about-me {
+      h2 {
+        color: $lightTextColor;
+        font-family: $headingFont;
+        margin: 1rem;
+      }
+      p {
+        color: $lightTextColor;
+        font-family: $textFont;
+        font-weight: bolder;
+        margin: 1rem;
+      }
+    }
+  }
+  &::after {
+    content: "";
+    display: block;
+    height: 50px;
+    width: 100%;
+  }
+  #fast-contact {
+    background: white;
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    #contacts {
+      text-align: center;
+      a {
+        .contact-icon {
+          height: 25px;
+          padding: 0 1rem;
+        }
+      }
+    }
+  }
+  .home-button {
+    position: fixed;
+    top: 5px;
+    left: 5px;
+  }
 }
 
+@media (min-width: 1000px) {
+  .aboutMe-container {
+    #profile {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      align-items: center;
+      height: 90vh;
+      #about-me {
+        h2{
+          font-size: 3rem;
+        }
+      }
+    }
+  }
+}

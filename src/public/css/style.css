@@ -21,7 +21,6 @@ body {
       width: 50%;
       max-width: 350px;
       border-radius: 100%;
-      -webkit-box-shadow: 0px 2px 50px 5px rgba(108, 0, 249, 0.73);
       box-shadow: 0px 2px 50px 5px rgba(108, 0, 249, 0.73);
       margin: 2.5rem; }
     .index-container #profile #description {
@@ -72,15 +71,78 @@ header {
       padding: 0.5rem;
       font-family: "Raleway", sans-serif;
       font-weight: bolder;
-      color: #808080; }
+      color: #cacaca; }
 
 .aboutMe-container {
-  transition: all .4s ease-in-out;
+  transition: all 0.4s ease-in-out;
   background: #232222;
   position: absolute;
   height: 100vh;
-  width: 100%; }
+  width: 100%;
+  max-width: 1920px; }
+  .aboutMe-container #profile #me {
+    text-align: center; }
+    .aboutMe-container #profile #me #profile-image {
+      display: flex;
+      justify-content: center; }
+      .aboutMe-container #profile #me #profile-image img {
+        width: 150px;
+        border-radius: 100%;
+        box-shadow: 0px 2px 50px 5px rgba(108, 0, 249, 0.73);
+        margin: 2rem;
+        transition: all 0.4s ease-in-out; }
+    .aboutMe-container #profile #me #profile-image img:hover {
+      transform: scale(1.05); }
+    .aboutMe-container #profile #me h1 {
+      color: #cacaca;
+      margin: 0.5rem;
+      font-family: "Anton", sans-serif;
+      font-size: 3rem; }
+    .aboutMe-container #profile #me h3 {
+      font-family: "Raleway", sans-serif;
+      color: rgba(108, 0, 249, 0.73); }
+    .aboutMe-container #profile #me hr {
+      border: 0.5px solid rgba(108, 0, 249, 0.73);
+      width: 40%;
+      margin: 1rem auto; }
+  .aboutMe-container #profile #about-me h2 {
+    color: #cacaca;
+    font-family: "Anton", sans-serif;
+    margin: 1rem; }
+  .aboutMe-container #profile #about-me p {
+    color: #cacaca;
+    font-family: "Raleway", sans-serif;
+    font-weight: bolder;
+    margin: 1rem; }
+  .aboutMe-container::after {
+    content: "";
+    display: block;
+    height: 50px;
+    width: 100%; }
+  .aboutMe-container #fast-contact {
+    background: white;
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%; }
+    .aboutMe-container #fast-contact #contacts {
+      text-align: center; }
+      .aboutMe-container #fast-contact #contacts a .contact-icon {
+        height: 25px;
+        padding: 0 1rem; }
+  .aboutMe-container .home-button {
+    position: fixed;
+    top: 5px;
+    left: 5px; }
 
+@media (min-width: 1000px) {
+  .aboutMe-container #profile {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    height: 90vh; }
+    .aboutMe-container #profile #about-me h2 {
+      font-size: 3rem; } }
 .contactMe-container {
   transition: all .4s ease-in-out;
   position: absolute;
