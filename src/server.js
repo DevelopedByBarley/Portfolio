@@ -5,7 +5,6 @@ const app = express();
 
 const expressLayout = require('express-ejs-layouts');
 
-console.log(__dirname + '/public');
 app.set('views', __dirname + '/views')
 app.set('view engine', 'ejs');
 app.set('layout', './layouts/layout.ejs')

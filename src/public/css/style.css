@@ -7,21 +7,62 @@
 body {
   background: #232222; }
 
-.index-container #profile {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center; }
-  .index-container #profile #profile-image img {
-    width: 60%;
-    max-width: 350px;
-    border-radius: 100%;
-    -webkit-box-shadow: 0px 2px 50px 5px rgba(108, 0, 249, 0.73);
-    box-shadow: 0px 2px 50px 5px rgba(108, 0, 249, 0.73); }
+.index-container {
+  margin: 2rem 0;
+  max-width: 1500px;
+  margin: 0 auto; }
+  .index-container #profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center; }
+    .index-container #profile #profile-image img {
+      width: 50%;
+      max-width: 350px;
+      border-radius: 100%;
+      -webkit-box-shadow: 0px 2px 50px 5px rgba(108, 0, 249, 0.73);
+      box-shadow: 0px 2px 50px 5px rgba(108, 0, 249, 0.73);
+      margin: 2.5rem; }
+    .index-container #profile #description {
+      padding: 2rem; }
+      .index-container #profile #description #greetings h1 {
+        color: rgba(108, 0, 249, 0.73);
+        font-size: 3rem;
+        font-family: "Anton", sans-serif; }
+      .index-container #profile #description #introduction {
+        color: white; }
+        .index-container #profile #description #introduction h1 {
+          font-family: "Anton", sans-serif;
+          margin: 0.5rem;
+          font-size: 2.5rem; }
+        .index-container #profile #description #introduction h3 {
+          font-family: "Raleway", sans-serif;
+          font-size: 2rem; }
+      .index-container #profile #description #skills {
+        color: rgba(108, 0, 249, 0.73);
+        font-family: "Raleway", sans-serif;
+        font-size: 1.5rem; }
 
+@media (min-width: 1500px) {
+  .index-container {
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    .index-container #profile {
+      display: grid;
+      grid-template-columns: 2fr 2fr; }
+      .index-container #profile #description #greetings h1 {
+        font-size: 5rem; }
+      .index-container #profile #description #introduction h1 {
+        font-size: 6rem; }
+      .index-container #profile #description #introduction h3 {
+        font-family: "Raleway", sans-serif;
+        font-size: 3rem; } }
 header {
-  height: 40px; }
+  height: 40px;
+  margin-top: 2rem; }
   header nav {
     display: flex;
     align-items: center;

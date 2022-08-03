@@ -1,4 +1,7 @@
 .index-container {
+  margin: 2rem 0;
+  max-width: 1500px;
+  margin: 0 auto;
   #profile {
     display: flex;
     align-items: center;
@@ -7,13 +10,65 @@
     text-align: center;
     #profile-image {
       img {
-        width: 60%;
+        width: 50%;
         max-width: 350px;
         border-radius: 100%;
         -webkit-box-shadow: 0px 2px 50px 5px rgba(108, 0, 249, 0.73);
         box-shadow: 0px 2px 50px 5px rgba(108, 0, 249, 0.73);
+        margin: 2.5rem;
       }
     }
+    #description {
+      padding: 2rem;
+      #greetings h1 {
+        color: $purple;
+        font-size: 3rem;
+        font-family: $headingFont;
+      }
+      #introduction {
+        color: white;
+        h1 {
+          font-family: $headingFont;
+          margin: 0.5rem;
+          font-size: 2.5rem;
+        }
+        h3 {
+          font-family: $textFont;
+          font-size: 2rem;
+        }
+      }
+      #skills {
+        color: $purple;
+        font-family: $textFont;
+        font-size: 1.5rem;
+      }
     }
+  }
 }
 
+@media (min-width: 1500px) {
+  .index-container {
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    #profile {
+      display: grid;
+      grid-template-columns: 2fr 2fr;
+      #description {
+        #greetings h1 {
+          font-size: 5rem;
+        }
+        #introduction {
+          h1 {
+            font-size: 6rem;
+          }
+          h3 {
+            font-family: $textFont;
+            font-size: 3rem;
+          }
+        }
+      }
+    }
+  }
+}
