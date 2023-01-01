@@ -1,0 +1,25 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "Barley Portfolio",
+  "main": "server.js",
+  "scripts": {
+    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend",
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js",
+    "client-install": "npm install --prefix frontend",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm start --prefix frontend\""
+  },
+  "author": "Barley",
+  "license": "MIT",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "concurrently": "^7.6.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^6.8.2",
+    "nodemon": "^2.0.20"
+  }
+}
