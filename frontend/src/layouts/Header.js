@@ -7,19 +7,19 @@ import '../styles/layouts/Header.css'
 export function Header() {
   return (
     <Container id='header-container'>
-      <Row className='header'>
-        <Col className='d-flex align-items-center justify-content-center flex-column border' >
+      <Row className='header mt-5'>
+        <Col className='d-flex align-items-center justify-content-center flex-column' >
           <Row>
             <Col sm={12} className=' text-light'>
-              <div className='header-image  mb-5'>
-                <img src={me} className="w-100 h-100 shadow  mb-5 bg-white rounded"/>
+              <div className='header-image mb-5'>
+                <img src={me} className="w-100 h-100 shadow  mb-5 bg-white "/>
               </div>
             </Col>
             <Col sm={12} className='profile-content'>
-              <h2 className="name">Szaniszló Árpád</h2>
-              <h4 className='profession'>Wev developer</h4>
-              <p className='description'>I'm Creative designer based in New York, And i'm very passionate and dedicated to my work.</p>
-              <Button variant='dark'>Say Hello! <BsArrowUpRightCircle /></Button>
+              <h1 className="name">Szaniszló Árpád</h1>
+              <h3 className='profession'>Wev developer</h3>
+              <p className='description'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mi elit, maximus vitae laoreet in, </p>
+              <Button onClick={() => {alert('Hello!')}} variant='dark'>Say Hello! <BsArrowUpRightCircle /></Button>
             </Col>
           </Row>
         </Col>

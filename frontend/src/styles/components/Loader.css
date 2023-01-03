@@ -1,0 +1,36 @@
+.loader {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  -webkit-animation: loaderEffect 1.4s;
+          animation: loaderEffect 1.4s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  right: 0;
+  z-index: 100;
+}
+
+@-webkit-keyframes loaderEffect {
+  0% {
+    right: 0;
+  }
+  80% {
+    right: -10%;
+  }
+  100% {
+    right: -100%;
+  }
+}
+
+@keyframes loaderEffect {
+  0% {
+    right: 0;
+  }
+  80% {
+    right: -10%;
+  }
+  100% {
+    right: -100%;
+  }
+}
+/*# sourceMappingURL=Loader.css.map */

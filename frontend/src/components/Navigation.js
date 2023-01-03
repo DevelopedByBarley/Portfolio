@@ -4,7 +4,7 @@ import { Nav, Navbar, Container } from 'react-bootstrap'
 export function Navigation() {
   return (
     <>
-      <Navbar bg="light" className='sticky-top' expand="lg" variant="light">
+      <Navbar bg="dark" className='sticky-top' expand="lg" variant="dark" style={{zIndex: "99"}}>
         <Container>
           <Navbar.Brand href="#header-container">Icon</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />

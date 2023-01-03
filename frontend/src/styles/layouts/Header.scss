@@ -4,9 +4,12 @@
   }
 
   .header-image {
-    height: 150px;
-    max-width: 150px;
+    height: 250px;
+    width: 250px;
     margin: 0 auto;
+    
+    img {
+      border-radius: 50%;
+    }
   }
-
 }
