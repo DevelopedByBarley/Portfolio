@@ -9,6 +9,8 @@ import { Services } from './layouts/Services';
 import { Loader } from './components/Loader';
 import { Works } from './layouts/Works';
 import { Skills } from './layouts/Skills';
+import {ContactMe} from './layouts/ContactMe'
+
 function App() {
   return (
     <div className="App">
@@ -18,8 +20,9 @@ function App() {
         <Header />
         <About />
         <Services />
-        <Works/>
-        <Skills/>
+        <Works />
+        <Skills />
+        <ContactMe />
       </Container>
     </div>
   );

@@ -2,7 +2,7 @@ import { Button, Card } from 'react-bootstrap'
 
 export function CardComponent({ image, title, text }) {
   return (
-    <Card className='shadow p-3 mb-5 bg-white rounded'  style={{ width: '19rem', marginBottom: "2rem", border: "none" }}>
+    <Card className='shadow  mb-5 bg-white rounded'  style={{width: '25rem', marginBottom: "2rem", border: "none" }}>
       <Card.Img variant="top" src={image} />
       <Card.Body>
         <Card.Title>{title}</Card.Title>
