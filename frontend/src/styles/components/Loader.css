@@ -4,10 +4,21 @@
   position: fixed;
   -webkit-animation: loaderEffect 1.4s;
           animation: loaderEffect 1.4s;
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
   -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
   right: 0;
   z-index: 100;
+}
+
+.loader .title {
+  -webkit-animation: titleEffect 2.5s linear;
+          animation: titleEffect 2.5s linear;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  opacity: 0;
+  font-size: 4rem;
 }
 
 @-webkit-keyframes loaderEffect {
@@ -31,6 +42,24 @@
   }
   100% {
     right: -100%;
+  }
+}
+
+@-webkit-keyframes titleEffect {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes titleEffect {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 /*# sourceMappingURL=Loader.css.map */

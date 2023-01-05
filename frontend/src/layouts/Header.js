@@ -12,14 +12,18 @@ export function Header() {
           <Row>
             <Col sm={12} className=' text-light'>
               <div className='header-image mb-5'>
-                <img src={me} className="w-100 h-100 shadow  mb-5 bg-white "/>
+                <img src={me} className="w-100 h-100 shadow  mb-5 bg-white " />
               </div>
             </Col>
             <Col sm={12} className='profile-content'>
               <h1 className="name">Szaniszló Árpád</h1>
               <h3 className='profession'>Wev developer</h3>
-              <p className='description'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mi elit, maximus vitae laoreet in, </p>
-              <Button onClick={() => {alert('Hello!')}} variant='dark'>Say Hello! <BsArrowUpRightCircle /></Button>
+              <p className='description w-70 m-auto mb-5 mt-5'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mi elit,
+                maximus vitae laoreet in, blandit ut est. Phasellus quis sem commodo,
+                accumsan lorem at, egestas diam. Etiam ut viverra turpis.</p>
+              <Nav.Link href="#contact-container">
+                <Button variant='dark'>Contact me!<BsArrowUpRightCircle size={25} /></Button>
+              </Nav.Link>
             </Col>
           </Row>
         </Col>
@@ -27,7 +31,7 @@ export function Header() {
       <Row>
         <Col sm={12}>
           <Nav.Link href="#about">
-            <BsFillArrowDownCircleFill size={30}  className="m-5"/>
+            <BsFillArrowDownCircleFill size={30} className="m-5" />
           </Nav.Link>
         </Col>
       </Row>

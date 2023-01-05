@@ -3,9 +3,17 @@
   width: 100%;
   position: fixed;
   animation: loaderEffect 1.4s ;
+  animation-delay: 3s;
   animation-fill-mode: forwards;
   right: 0;
   z-index: 100;
+
+  .title {
+    animation: titleEffect 2.5s linear ;
+    animation-fill-mode: forwards;
+    opacity: 0;
+    font-size: 4rem;
+  }
 }
 
 @keyframes loaderEffect {
@@ -15,5 +23,13 @@
     right: -10%
   } 100% {
     right: -100%;
+  }
+}
+
+@keyframes titleEffect {
+  from {
+    opacity: 0;
+  } to {
+    opacity: 1;
   }
 }

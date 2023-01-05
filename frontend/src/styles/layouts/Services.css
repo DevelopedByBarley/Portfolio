@@ -1,0 +1,14 @@
+.services .services-card {
+  overflow: hidden;
+}
+
+.services .services-card img {
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+
+.services .services-card:hover img {
+  -webkit-transform: scale(1.1) rotate(-1.5deg);
+          transform: scale(1.1) rotate(-1.5deg);
+}
+/*# sourceMappingURL=Services.css.map */
