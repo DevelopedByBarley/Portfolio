@@ -3,8 +3,9 @@ import { Nav, Navbar, Container } from 'react-bootstrap'
 export function Navigation() {
   return (
     <>
-      <Navbar bg="dark" className='sticky-top' expand="lg" variant="dark" style={{ zIndex: "99" }}>
+      <Navbar bg="dark" variant='dark' className='sticky-top' expand="lg">
         <Container>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link href="#header-container">Home</Nav.Link>
@@ -20,3 +21,4 @@ export function Navigation() {
     </>
   )
 }
+
