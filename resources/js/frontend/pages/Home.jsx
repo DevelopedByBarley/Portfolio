@@ -3,6 +3,7 @@ import { useAudio } from "../hooks/useAudio";
 import { PreConsent } from "../components/PreConsent";
 import { useState } from "react";
 import { useCookies } from "react-cookie";
+import { Intro } from "../components/Intro";
 
 export default function Home() {
     const [isPreConsentShown, setIsPreConsentShown] = useState(true);
@@ -11,9 +12,11 @@ export default function Home() {
     const hoverSound = useAudio("/storage/sounds/hover.mp3", 0.5);
     const selectSound = useAudio("/storage/sounds/select.mp3", 0.5);
 
-
-    const [cookies, setCookie] = useCookies(["preConsentGiven", "audioPermission", "playIntro"]);
-
+    const [cookies, setCookie] = useCookies([
+        "preConsentGiven",
+        "audioPermission",
+        "playIntro",
+    ]);
 
     const handleCheckout = () => {
         router.post(
@@ -54,14 +57,19 @@ export default function Home() {
                 />
             )}
 
+            {cookies.playIntro ? <Intro /> : (
             <div class="relative overflow-hidden before:absolute before:top-0 before:start-1/2 before:bg-[url('https://preline.co/assets/svg/examples/squared-bg-element.svg')] dark:before:bg-[url('https://preline.co/assets/svg/examples-dark/squared-bg-element.svg')] before:bg-no-repeat before:bg-top before:size-full before:-z-1 before:transform before:-translate-x-1/2">
                 <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-10">
                     <div class="flex justify-center">
                         <a
                             class="inline-flex items-center gap-x-2 bg-white border border-gray-200 text-xs text-gray-600 p-2 px-3 rounded-full transition hover:border-gray-300 focus:outline-hidden focus:border-gray-300 dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:hover:border-neutral-600 dark:focus:border-neutral-600"
                             href="#"
-                            onMouseEnter={() => cookies.audioPermission && hoverSound.play()}
-                            onClick={() => cookies.audioPermission &&  selectSound.play()}
+                            onMouseEnter={() =>
+                                cookies.audioPermission && hoverSound.play()
+                            }
+                            onClick={() =>
+                                cookies.audioPermission && selectSound.play()
+                            }
                         >
                             Explore the Capital Product
                             <span class="flex items-center gap-x-1">
@@ -125,7 +133,7 @@ export default function Home() {
                         </button>
                     </div>
                 </div>
-            </div>
+            </div>)}
         </>
     );
 }
