@@ -38,37 +38,41 @@ export const Intro = () => {
             });
             gsap.set(images, { autoAlpha: 0, zIndex: (index) => images.length - index });
 
-            timeline.to(images[0], { autoAlpha: 1, scale: 1, duration: 1.2 });
+            // Első kép: 10s megjelenés
+            timeline.to(images[0], { autoAlpha: 1, scale: 1, duration: 10 });
 
             let previousImage = images[0];
 
             images.slice(1).forEach((image) => {
+                // Új kép fade in: 2s
                 timeline.to(
                     image,
-                    { autoAlpha: 1, scale: 1, duration: 1.2 },
-                    "+=1.2"
+                    { autoAlpha: 1, scale: 1, duration: 3 },
+                    "+=2"
                 );
 
+                // Előző kép fade out: 2s (overlap 1s-nál kezdődik)
                 timeline.to(
                     previousImage,
-                    { autoAlpha: 0, duration: 1.2 },
-                    "<0.6"
+                    { autoAlpha: 0, duration: 3 },
+                    "<1"
                 );
 
                 previousImage = image;
             });
 
+            // Fade out a végén: 2s delay + 2s fade
             timeline.to(
                 containerRef.current,
                 {
                     autoAlpha: 0,
-                    duration: 0.8,
+                    duration: 1,
                     onComplete: () => {
                         setIsVisible(false);
                         setCookie("introPlayed", "true", { path: "/" });
                     },
                 },
-                "+=1.2"
+                "+=4"
             );
         },
         { scope: containerRef, dependencies: [] }
