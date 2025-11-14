@@ -1,18 +1,27 @@
-import { router } from '@inertiajs/react';
-import { useAudio } from '../../hooks/useAudio';
+import { router } from "@inertiajs/react";
+import { useAudio } from "../hooks/useAudio";
+import { PreConsent } from "../components/PreConsent";
+import { useState } from "react";
+import { useCookies } from "react-cookie";
 
 export default function Home() {
-    const gtaTheme = useAudio('/storage/sounds/GTA4Theme.mp3', 0.3);
-    const hoverSound = useAudio('/storage/sounds/hover.mp3', 0.5);
-    const selectSound = useAudio('/storage/sounds/select.mp3', 0.5);
+    const [isPreConsentShown, setIsPreConsentShown] = useState(true);
+
+    const gtaTheme = useAudio("/storage/sounds/GTA4Theme.mp3", 0.3);
+    const hoverSound = useAudio("/storage/sounds/hover.mp3", 0.5);
+    const selectSound = useAudio("/storage/sounds/select.mp3", 0.5);
+
+
+    const [cookies, setCookie] = useCookies(["preConsentGiven", "audioPermission", "playIntro"]);
+
 
     const handleCheckout = () => {
         router.post(
-            '/checkout',
+            "/checkout",
             {
                 products: [
-                    { price_id: 'price_1RiY1nQLRSLLxNpAogMBaUK0', quantity: 2 },
-                    { price_id: 'price_1RiYWlQLRSLLxNpAqZb5Zfom', quantity: 1 },
+                    { price_id: "price_1RiY1nQLRSLLxNpAogMBaUK0", quantity: 2 },
+                    { price_id: "price_1RiYWlQLRSLLxNpAqZb5Zfom", quantity: 1 },
                 ],
             },
             {
@@ -24,51 +33,55 @@ export default function Home() {
                     if (response?.url) {
                         window.location.href = response.url;
                     } else {
-                        alert('Nem sikerült elindítani a fizetést.');
+                        alert("Nem sikerült elindítani a fizetést.");
                     }
                 },
                 onError: (errors) => {
                     console.error(errors);
-                    alert('Valami hiba történt.');
+                    alert("Valami hiba történt.");
                 },
             }
         );
     };
 
-
     return (
         <>
+            {isPreConsentShown && (
+                <PreConsent
+                    isPreConsentShown={isPreConsentShown}
+                    setIsPreConsentShown={setIsPreConsentShown}
+                    gtaTheme={gtaTheme}
+                />
+            )}
+
             <div class="relative overflow-hidden before:absolute before:top-0 before:start-1/2 before:bg-[url('https://preline.co/assets/svg/examples/squared-bg-element.svg')] dark:before:bg-[url('https://preline.co/assets/svg/examples-dark/squared-bg-element.svg')] before:bg-no-repeat before:bg-top before:size-full before:-z-1 before:transform before:-translate-x-1/2">
-
-                {/* Zene gomb */}
-                <button
-                    onClick={gtaTheme.toggle}
-                    className="fixed top-4 right-4 z-50 bg-main-orange hover:bg-light-orange text-white p-3 rounded-full shadow-lg transition"
-                >
-                    {gtaTheme.isPlaying ? (
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-                        </svg>
-                    ) : (
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
-                        </svg>
-                    )}
-                </button>
-
                 <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-10">
                     <div class="flex justify-center">
                         <a
                             class="inline-flex items-center gap-x-2 bg-white border border-gray-200 text-xs text-gray-600 p-2 px-3 rounded-full transition hover:border-gray-300 focus:outline-hidden focus:border-gray-300 dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:hover:border-neutral-600 dark:focus:border-neutral-600"
                             href="#"
-                            onMouseEnter={() => hoverSound.play()}
-                            onClick={() => selectSound.play()}
+                            onMouseEnter={() => cookies.audioPermission && hoverSound.play()}
+                            onClick={() => cookies.audioPermission &&  selectSound.play()}
                         >
                             Explore the Capital Product
                             <span class="flex items-center gap-x-1">
-                                <span class="border-s border-gray-200 text-blue-600 ps-2 dark:text-blue-500 dark:border-neutral-700">Explore</span>
-                                <svg class="shrink-0 size-4 text-blue-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6" /></svg>
+                                <span class="border-s border-gray-200 text-blue-600 ps-2 dark:text-blue-500 dark:border-neutral-700">
+                                    Explore
+                                </span>
+                                <svg
+                                    class="shrink-0 size-4 text-blue-600"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+                                    <path d="m9 18 6-6-6-6" />
+                                </svg>
                             </span>
                         </a>
                     </div>
@@ -80,11 +93,24 @@ export default function Home() {
                     </div>
 
                     <div class="mt-5 max-w-3xl text-center mx-auto">
-                        <p class="text-lg text-gray-600 dark:text-neutral-400">Preline is a large open-source project, crafted with Tailwind CSS framework by Hmlstream.</p>
+                        <p class="text-lg text-gray-600 dark:text-neutral-400">
+                            Preline is a large open-source project, crafted with
+                            Tailwind CSS framework by Hmlstream.
+                        </p>
                     </div>
                     <div class="mt-8 gap-3 flex justify-center">
-                        <a class="inline-flex justify-center items-center gap-x-3 text-center bg-linear-to-tl from-blue-600 to-violet-600 hover:from-violet-600 hover:to-blue-600 focus:outline-hidden focus:from-violet-600 focus:to-blue-600 border border-transparent text-white text-sm font-medium rounded-full py-3 px-4" href="#">
-                            <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <a
+                            class="inline-flex justify-center items-center gap-x-3 text-center bg-linear-to-tl from-blue-600 to-violet-600 hover:from-violet-600 hover:to-blue-600 focus:outline-hidden focus:from-violet-600 focus:to-blue-600 border border-transparent text-white text-sm font-medium rounded-full py-3 px-4"
+                            href="#"
+                        >
+                            <svg
+                                class="shrink-0 size-4"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                fill="currentColor"
+                                viewBox="0 0 16 16"
+                            >
                                 <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
                             </svg>
                             Continue with Github
