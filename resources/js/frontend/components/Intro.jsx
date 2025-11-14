@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
+import { useCookies } from "react-cookie";
 
 gsap.registerPlugin(useGSAP);
 
@@ -22,6 +23,7 @@ const introImages = [
 export const Intro = () => {
     const containerRef = useRef(null);
     const [isVisible, setIsVisible] = useState(true);
+    const [cookies, setCookie] = useCookies(["playIntro"]);
 
     useGSAP(
         () => {
@@ -61,7 +63,10 @@ export const Intro = () => {
                 {
                     autoAlpha: 0,
                     duration: 0.8,
-                    onComplete: () => setIsVisible(false),
+                    onComplete: () => {
+                        setIsVisible(false);
+                        setCookie("introPlayed", "true", { path: "/" });
+                    },
                 },
                 "+=1.2"
             );
@@ -74,7 +79,7 @@ export const Intro = () => {
     }
 
     return (
-        <div ref={containerRef} className="absolute inset-0 w-full h-full overflow-hidden">
+        <div ref={containerRef} className="absolute inset-0 w-full h-full overflow-hidden bg-black">
             {introImages.map((image, index) => (
                 <div key={image.src} className="absolute inset-0 intro-image opacity-0">
                     <img
