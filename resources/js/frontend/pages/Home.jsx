@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useCookies } from "react-cookie";
 import { Intro } from "../components/Intro";
 import { Menu } from "../components/Menu";
+import { Scene } from "../components/Scene";
 
 export default function Home() {
     const [isPreConsentShown, setIsPreConsentShown] = useState(true);
@@ -65,6 +66,7 @@ export default function Home() {
                 <Intro />
             ) : (
                 <div class="relative overflow-hidden before:absolute before:top-0 before:start-1/2 before:bg-[url('https://preline.co/assets/svg/examples/squared-bg-element.svg')] dark:before:bg-[url('https://preline.co/assets/svg/examples-dark/squared-bg-element.svg')] before:bg-no-repeat before:bg-top before:size-full before:-z-1 before:transform before:-translate-x-1/2">
+                    <Scene />
                     <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-10">
                         <div class="flex justify-center">
                             <a
