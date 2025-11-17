@@ -22,6 +22,14 @@ export default function Home() {
         "introPlayed",
     ]);
 
+    if(!cookies.preConsentGiven){
+        return <PreConsent
+            isPreConsentShown={isPreConsentShown}
+            setIsPreConsentShown={setIsPreConsentShown}
+            gtaTheme={gtaTheme}
+        />;
+    }
+
     const handleCheckout = () => {
         router.post(
             "/checkout",
@@ -61,7 +69,6 @@ export default function Home() {
                 />
             )}
 
-            <Menu />
 
             {cookies.playIntro && !cookies.introPlayed ? (
                 <Intro />
@@ -69,6 +76,7 @@ export default function Home() {
                 <div class="relative overflow-hidden before:absolute before:top-0 before:start-1/2 before:bg-[url('https://preline.co/assets/svg/examples/squared-bg-element.svg')] dark:before:bg-[url('https://preline.co/assets/svg/examples-dark/squared-bg-element.svg')] before:bg-no-repeat before:bg-top before:size-full before:-z-1 before:transform before:-translate-x-1/2">
                     <Scene />
                     <GTAHeader />
+                    <Menu />
                     <div className="h-screen bg-main-dark"></div>
                 </div>
             )}

@@ -65,7 +65,6 @@ export const Intro = () => {
             timeline.to(
                 containerRef.current,
                 {
-                    autoAlpha: 0,
                     duration: 1,
                     onComplete: () => {
                         setIsVisible(false);

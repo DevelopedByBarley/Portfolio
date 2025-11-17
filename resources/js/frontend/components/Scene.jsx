@@ -1,6 +1,7 @@
 import { forwardRef, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
+import { useCookies } from "react-cookie";
 
 gsap.registerPlugin(useGSAP);
 
@@ -9,11 +10,12 @@ export const Scene = () => {
     const starsRef = useRef(null);
     const imageRef = useRef(null);
     const overlayRef = useRef(null);
-    const [isVisible, setIsVisible] = useState(true);
+    const [cookies, setCookie] = useCookies(["scenePlayed"]);
+
 
     useGSAP(
         () => {
-            if (!wrapperRef.current) {
+            if ( cookies.scenePlayed) {
                 return;
             }
 
@@ -28,7 +30,9 @@ export const Scene = () => {
 
             const timeline = gsap.timeline({
                 defaults: { ease: "power2.inOut" },
-                //onComplete: () => setIsVisible(false),
+                onComplete: () => {
+                    setCookie("scenePlayed", true, { path: "/", maxAge: 31536000 });
+                },
             });
 
             gsap.set(imageRef.current, { autoAlpha: 0 });
@@ -79,7 +83,7 @@ export const Scene = () => {
         { scope: wrapperRef, dependencies: [] }
     );
 
-    if (!isVisible) {
+    if (cookies.scenePlayed) {
         return null;
     }
 

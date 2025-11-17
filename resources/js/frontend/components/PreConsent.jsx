@@ -29,6 +29,7 @@ export const PreConsent = ({
     };
 
     const handleDecline = () => {
+        setCookie("preConsentGiven", true, { path: "/", maxAge: 31536000 });
         setIsPreConsentShown(false);
     };
 
@@ -182,22 +183,16 @@ export const PreConsent = ({
                                 >
                                     ACCEPT & ENTER
                                 </button>
-                                <button
-                                    onClick={handleDecline}
-                                    className="px-8 py-3 bg-main-dark hover:bg-main-light-dark text-main-orange font-custom text-lg tracking-wide border-2 border-main-orange hover:border-light-yellow transition-all duration-300"
-                                >
-                                    SKIP INTRO
-                                </button>
                             </div>
 
                             {/* Footer szöveg */}
                             <div className="mt-8 text-center">
                                 <p className="text-gray-300 text-xs">
-                                    Press{" "}
+                                    Please choose your settings and press{" "}
                                     <span className="text-main-orange font-bold">
                                         ACCEPT & ENTER
                                     </span>{" "}
-                                    to continue with full experience
+                                    to continue with your own experience
                                 </p>
                             </div>
                         </div>
