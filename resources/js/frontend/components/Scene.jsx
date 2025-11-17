@@ -2,6 +2,7 @@ import { forwardRef, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useCookies } from "react-cookie";
+import { useAudio } from "../hooks/useAudio";
 
 gsap.registerPlugin(useGSAP);
 
@@ -11,12 +12,18 @@ export const Scene = () => {
     const imageRef = useRef(null);
     const overlayRef = useRef(null);
     const [cookies, setCookie] = useCookies(["scenePlayed"]);
+    const passedSound = useAudio("/storage/sounds/passed.mp3", 0.5);
+
 
 
     useGSAP(
         () => {
-            if ( cookies.scenePlayed) {
+            if (cookies.scenePlayed) {
                 return;
+            }
+
+            if(cookies.audioPermission){
+                passedSound.play();
             }
 
             const starSvgs = starsRef.current

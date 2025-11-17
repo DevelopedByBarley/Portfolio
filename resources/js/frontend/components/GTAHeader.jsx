@@ -20,7 +20,7 @@ export const GTAHeader = () => {
             <div className="absolute inset-0  to-main-orange/30 opacity-90" />
             <div className="absolute -right-20 top-10 h-72 w-72 rounded-full bg-main-orange/30 blur-3xl" />
             <div className="relative z-10 max-w-6xl mx-auto px-6 py-16 flex flex-col md:flex-row items-center gap-12 w-full">
-                <div className="relative flex-shrink-0 bg-main-orange flex items-center justify-center flex-col rounded-lg min-h-[500px] min-w-[300px] md:min-w-[500px] p-4 shadow-2xl">
+                <div className="relative flex-shrink-0 bg-main-orange flex items-center justify-center flex-col rounded-lg min-h-[600px] min-w-[300px] md:min-w-[500px] p-4 shadow-2xl">
                     <div className="absolute -inset-4 shadow-2xl" />
                     <img
                         src="/storage/images/profile.jpg"

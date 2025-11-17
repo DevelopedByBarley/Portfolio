@@ -1,11 +1,11 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { SettingsContext } from "../contexts/SettingsContext";
-import { useAudio } from "../hooks/useAudio";
 import { useCookies } from "react-cookie";
 
 export const PreConsent = ({
     setIsPreConsentShown,
     gtaTheme,
+    selectSound,
 }) => {
     const { settings, setSettings } = useContext(SettingsContext);
     const [cookies, setCookie] = useCookies(["preConsentGiven"]);
@@ -17,6 +17,9 @@ export const PreConsent = ({
             // set cookies for remembering user choice, set
             document.cookie = "audioPermission=true; path=/; max-age=31536000"; // 1 year
             console.log("Playing GTA Theme...");
+            if (selectSound) {
+                selectSound.play();
+            }
             gtaTheme.play();
         }
         if (settings.playIntro) {

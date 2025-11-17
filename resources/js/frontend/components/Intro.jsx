@@ -22,8 +22,17 @@ const introImages = [
 
 export const Intro = () => {
     const containerRef = useRef(null);
+    const timelineRef = useRef(null);
     const [isVisible, setIsVisible] = useState(true);
     const [cookies, setCookie] = useCookies(["playIntro"]);
+
+    const handleSkip = () => {
+        if (timelineRef.current) {
+            timelineRef.current.kill();
+        }
+        setIsVisible(false);
+        setCookie("introPlayed", "true", { path: "/" });
+    };
 
     useGSAP(
         () => {
@@ -36,6 +45,7 @@ export const Intro = () => {
                 repeat: 0,
                 defaults: { ease: "power2.inOut" },
             });
+            timelineRef.current = timeline;
             gsap.set(images, { autoAlpha: 0, zIndex: (index) => images.length - index });
 
             // Első kép: 10s megjelenés
@@ -93,6 +103,12 @@ export const Intro = () => {
                     />
                 </div>
             ))}
+            <button
+                onClick={handleSkip}
+                className="fixed bottom-8 right-8 px-6 py-3 bg-black/70 hover:bg-main-orange/90 text-white font-bold border-2 border-white/30 hover:border-white/60 rounded-lg transition-all duration-300 backdrop-blur-sm z-50 shadow-lg hover:shadow-xl"
+            >
+                Skip Intro
+            </button>
         </div>
     );
 };

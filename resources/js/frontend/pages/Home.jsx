@@ -66,6 +66,7 @@ export default function Home() {
                     isPreConsentShown={isPreConsentShown}
                     setIsPreConsentShown={setIsPreConsentShown}
                     gtaTheme={gtaTheme}
+                    selectSound={selectSound}
                 />
             )}
 
