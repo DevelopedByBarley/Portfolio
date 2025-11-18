@@ -1,19 +1,26 @@
 import { router } from "@inertiajs/react";
 import { useAudio } from "../hooks/useAudio";
 import { PreConsent } from "../components/PreConsent";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useCookies } from "react-cookie";
 import { Intro } from "../components/Intro";
 import { Menu } from "../components/Menu";
 import { Scene } from "../components/Scene";
 import { GTAHeader } from "../components/GTAHeader";
+import { About } from "../components/About";
+import { useCheat } from "../hooks/useCheat";
+import CheatModal from "../components/CheatModal";
 
 export default function Home() {
     const [isPreConsentShown, setIsPreConsentShown] = useState(true);
+    const [showPassedModal, setShowPassedModal] = useState(false);
 
+    const [cheat, setCheat] = useState("");
+    useCheat({ cheat, setCheat, showPassedModal, setShowPassedModal });
     const gtaTheme = useAudio("/storage/sounds/GTA4Theme.mp3", 0.3);
     const hoverSound = useAudio("/storage/sounds/hover.mp3", 0.5);
     const selectSound = useAudio("/storage/sounds/select.mp3", 0.5);
+    const passedSound = useAudio("/storage/sounds/passed.mp3", 0.5);
 
     const [cookies, setCookie] = useCookies([
         "preConsentGiven",
@@ -22,15 +29,18 @@ export default function Home() {
         "introPlayed",
     ]);
 
-    if(!cookies.preConsentGiven){
-        return <PreConsent
-            isPreConsentShown={isPreConsentShown}
-            setIsPreConsentShown={setIsPreConsentShown}
-            gtaTheme={gtaTheme}
-        />;
+    if (!cookies.preConsentGiven) {
+        return (
+            <PreConsent
+                isPreConsentShown={isPreConsentShown}
+                setIsPreConsentShown={setIsPreConsentShown}
+                gtaTheme={gtaTheme}
+                selectSound={selectSound}
+            />
+        );
     }
 
-    const handleCheckout = () => {
+    /*   const handleCheckout = () => {
         router.post(
             "/checkout",
             {
@@ -57,28 +67,28 @@ export default function Home() {
                 },
             }
         );
-    };
+    }; */
 
     return (
         <>
-            {isPreConsentShown && (
-                <PreConsent
-                    isPreConsentShown={isPreConsentShown}
-                    setIsPreConsentShown={setIsPreConsentShown}
-                    gtaTheme={gtaTheme}
-                    selectSound={selectSound}
-                />
-            )}
-
-
+            <CheatModal
+                isOpen={showPassedModal}
+                onClose={() => setShowPassedModal(false)}
+                onSuccess={() => console.log("")}
+                selectSound={selectSound}
+                passedSound={passedSound}
+            />
             {cookies.playIntro && !cookies.introPlayed ? (
-                <Intro />
+                <Intro gtaTheme={gtaTheme} selectSound={selectSound} />
             ) : (
-                <div class="relative overflow-hidden before:absolute before:top-0 before:start-1/2 before:bg-[url('https://preline.co/assets/svg/examples/squared-bg-element.svg')] dark:before:bg-[url('https://preline.co/assets/svg/examples-dark/squared-bg-element.svg')] before:bg-no-repeat before:bg-top before:size-full before:-z-1 before:transform before:-translate-x-1/2">
-                    <Scene />
+                <div
+                    id="top"
+                    class="relative overflow-hidden before:absolute before:top-0 before:start-1/2 before:bg-[url('https://preline.co/assets/svg/examples/squared-bg-element.svg')] dark:before:bg-[url('https://preline.co/assets/svg/examples-dark/squared-bg-element.svg')] before:bg-no-repeat before:bg-top before:size-full before:-z-1 before:transform before:-translate-x-1/2"
+                >
+                    <Scene passedSound={passedSound} />
                     <GTAHeader />
                     <Menu />
-                    <div className="h-screen bg-main-dark"></div>
+                    <About hoverSound={hoverSound} />
                 </div>
             )}
         </>

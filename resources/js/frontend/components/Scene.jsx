@@ -6,13 +6,13 @@ import { useAudio } from "../hooks/useAudio";
 
 gsap.registerPlugin(useGSAP);
 
-export const Scene = () => {
+export const Scene = ({ passedSound}) => {
     const wrapperRef = useRef(null);
     const starsRef = useRef(null);
     const imageRef = useRef(null);
     const overlayRef = useRef(null);
     const [cookies, setCookie] = useCookies(["scenePlayed"]);
-    const passedSound = useAudio("/storage/sounds/passed.mp3", 0.5);
+
 
 
 
@@ -81,7 +81,7 @@ export const Scene = () => {
                 .set(wrapperRef.current, { autoAlpha: 0 })
                 .to(overlayRef.current, {
                     yPercent: -100,
-                    duration: 0.9,
+                    duration: 0.7,
                     ease: "power2.in",
                 })
 

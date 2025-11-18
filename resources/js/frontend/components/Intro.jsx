@@ -20,16 +20,20 @@ const introImages = [
     },
 ];
 
-export const Intro = () => {
+export const Intro = ({ gtaTheme, selectSound }) => {
     const containerRef = useRef(null);
     const timelineRef = useRef(null);
     const [isVisible, setIsVisible] = useState(true);
-    const [cookies, setCookie] = useCookies(["playIntro"]);
+    const [cookies, setCookie] = useCookies(["playIntro", "audioPermission"]);
 
     const handleSkip = () => {
         if (timelineRef.current) {
             timelineRef.current.kill();
         }
+        if(cookies.audioPermission){
+            selectSound.play();
+        }
+        gtaTheme.stop();
         setIsVisible(false);
         setCookie("introPlayed", "true", { path: "/" });
     };

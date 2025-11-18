@@ -2,11 +2,11 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 const MENU_ITEMS = [
     { label: "SKILLS", description: "Technológiák és stack", color: "#F97316", location: "#skills" },
+    { label: "TO TOP", description: "Vissza az elejére", color: "#C084FC", location: "#top" },
+    { label: "ABOUT", description: "Rólam röviden", color: "#38BDF8", location: "#about" },
     { label: "PROJECTS", description: "Kiemelt munkák", color: "#FB923C", location: "#projects" },
     { label: "EXPERIENCE", description: "Tapasztalat & évek", color: "#FACC15", location: "#experience" },
     { label: "CONTACT", description: "Elérhetőségek", color: "#34D399", location: "#contact" },
-    { label: "ABOUT", description: "Rólam röviden", color: "#38BDF8", location: "#about" },
-    { label: "BLOG", description: "Gondolatok, cikkek", color: "#C084FC", location: "#blog" },
 ];
 
 const polarToCartesian = (cx, cy, radius, angleInDegrees) => {
@@ -148,6 +148,7 @@ export const Menu = ({ onSelect = (item) => { } }) => {
 
                     {segments.map((segment, index) => (
                         <path
+
                             key={segment.label}
                             d={segment.path}
                             fill={segment.color}
@@ -155,7 +156,9 @@ export const Menu = ({ onSelect = (item) => { } }) => {
                             strokeWidth="1.5"
                             style={{ opacity: hoveredIndex === index ? 0.95 : 0.4 }}
                             className="transition-opacity duration-300 cursor-pointer"
-                            onMouseEnter={() => setHoveredIndex(index)}
+                            onMouseEnter={() => {
+                                setHoveredIndex(index)
+                            }}
                             onMouseLeave={() => setHoveredIndex((prev) => (prev === index ? 0 : prev))}
                             onFocus={() => setHoveredIndex(index)}
                             onBlur={() => setHoveredIndex(0)}

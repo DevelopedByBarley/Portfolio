@@ -16,7 +16,7 @@ const GTAStar = ({ filled }) => {
 
 export const GTAHeader = () => {
     return (
-        <header className="relative min-h-screen bg-main-dark text-white overflow-hidden flex items-center">
+        <header className="relative min-h-[90vh] bg-main-dark text-white overflow-hidden flex items-center">
             <div className="absolute inset-0  to-main-orange/30 opacity-90" />
             <div className="absolute -right-20 top-10 h-72 w-72 rounded-full bg-main-orange/30 blur-3xl" />
             <div className="relative z-10 max-w-6xl mx-auto px-6 py-16 flex flex-col md:flex-row items-center gap-12 w-full">

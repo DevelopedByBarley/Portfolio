@@ -20,12 +20,15 @@ export const PreConsent = ({
             if (selectSound) {
                 selectSound.play();
             }
-            gtaTheme.play();
         }
         if (settings.playIntro) {
             // Play intro sequence
             document.cookie = "playIntro=true; path=/; max-age=31536000"; // 1 year
             console.log("Playing intro sequence...");
+        }
+
+        if(settings.audioPermission && settings.playIntro){
+            gtaTheme.play();
         }
 
         document.cookie = "preConsentGiven=true; path=/; max-age=31536000"; // 1 year
