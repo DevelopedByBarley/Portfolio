@@ -11,6 +11,7 @@ import { About } from "../components/About";
 import { useCheat } from "../hooks/useCheat";
 import CheatModal from "../components/CheatModal";
 import { Jobs } from "../components/Jobs";
+import { Skills } from "../components/Skills";
 
 export default function Home() {
     const [isPreConsentShown, setIsPreConsentShown] = useState(true);
@@ -91,6 +92,7 @@ export default function Home() {
                     <Menu />
                     <About hoverSound={hoverSound} />
                     <Jobs hoverSound={hoverSound} />
+                    <Skills hoverSound={hoverSound} />
                 </div>
             )}
         </>

@@ -12,7 +12,7 @@ export const About = ({ hoverSound }) => {
     const [cookies, setCookie] = useCookies(["audioPermission"]);
     return (
         <section id="about" className="bg-main-dark text-white">
-            <div className="max-w-6xl mx-auto px-6 py-20 space-y-12">
+            <div className="max-w-7xl mx-auto px-6 py-20 space-y-12">
                 <div className="text-center">
 
                     <h2 className="font-custom text-7xl text-white m-3">
@@ -46,7 +46,7 @@ export const About = ({ hoverSound }) => {
                                         hoverSound.play();
                                     }
                                 }}
-                                className="cursor-nw-resize group flex items-center gap-3 border border-main-orange/40 rounded-xl px-4 py-3 text-sm transition duration-75 duration-300 hover:border-main-orange hover:bg-main-orange/10 hover:translate-x-1 hover:shadow-[0_12px_30px_rgba(0,0,0,0.35)]"
+                                className="cursor-pointer group flex items-center gap-3 border border-main-orange/40 rounded-xl px-4 py-3 text-sm transition duration-75 duration-300 hover:border-main-orange hover:bg-main-orange/10 hover:translate-x-1 hover:shadow-[0_12px_30px_rgba(0,0,0,0.35)]"
                             >
                                 <span className="text-main-orange text-xl transition duration-300 group-hover:text-white">
                                     ◎

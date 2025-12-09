@@ -175,7 +175,7 @@ export const Jobs = () => {
     return (
         <section id="projects" className="bg-main-dark text-white py-20">
 
-            <div className="max-w-6xl mx-auto px-6 space-y-12">
+            <div className="max-w-7xl mx-auto px-6 space-y-12">
 
                 <div className="text-center space-y-2">
                     <p className="tracking-[0.35em] text-xs text-white/60 uppercase">
@@ -209,7 +209,7 @@ export const Jobs = () => {
 
 const renderMidDeviceJobs = () => {
     return (
-        <div className="grid grid-cols-2 gap-2 max-w-6xl mx-auto px-6">
+        <div className="grid grid-cols-2 gap-2 max-w-7xl mx-auto px-6">
             {
                 gtaJobs.map((job, index) => (
                     <article
@@ -257,7 +257,7 @@ const renderMidDeviceJobs = () => {
 const renderSmallDeviceJobs = () => {
     return (
         <>
-            <div className="grid grid-cols-1 max-w-6xl mx-auto px-6">
+            <div className="grid grid-cols-1 max-w-7xl mx-auto px-6">
                 {gtaJobs.map((job, index) => (
                     <article
                         key={job.title}

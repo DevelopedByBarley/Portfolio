@@ -18,7 +18,7 @@ export default function Register() {
 
     return (
         <form className="py-16" onSubmit={submit}>
-            <div className="flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-6xl">
+            <div className="flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-7xl">
                 <div
                     className="hidden lg:block lg:w-1/2 bg-cover"
                     style={{
