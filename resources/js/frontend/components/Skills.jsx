@@ -80,13 +80,13 @@ export const Skills = ({ hoverSound }) => {
     ];
 
     return (
-        <div className="bg-main-dark">
+        <div className="bg-main-dark" id="skills">
             <div className="text-center py-10">
                 <h2 className="font-custom text-7xl text-white">SKILLS</h2>
                 <p className="text-lg text-white/80 mt-2">Technologiai stackem</p>
             </div>
 
-            <div className="min-h-[800px] flex flex-col  items-center">
+            <div className="min-h-[500px] flex flex-col  items-center">
                 <div className="md:grid grid-cols-2 container mx-auto max-w-7xl">
                     <div className="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-4 mx-auto">
                         {skills.map((skill) => (

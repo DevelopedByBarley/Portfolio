@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { toast } from "react-toastify";
 
 export const useCheat = ({ cheat, setCheat, showPassedModal, setShowPassedModal }) => {
-    const targetCode = "hesoyan";
+    const targetCode = "hesoyam";
 
     useEffect(() => {
         if (showPassedModal) return;

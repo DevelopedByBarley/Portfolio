@@ -12,6 +12,8 @@ import { useCheat } from "../hooks/useCheat";
 import CheatModal from "../components/CheatModal";
 import { Jobs } from "../components/Jobs";
 import { Skills } from "../components/Skills";
+import { Experience } from "../components/Experience";
+import { Contact } from "../components/Contact";
 
 export default function Home() {
     const [isPreConsentShown, setIsPreConsentShown] = useState(true);
@@ -23,6 +25,7 @@ export default function Home() {
     const hoverSound = useAudio("/storage/sounds/hover.mp3", 0.5);
     const selectSound = useAudio("/storage/sounds/select.mp3", 0.5);
     const passedSound = useAudio("/storage/sounds/passed.mp3", 0.5);
+    const cheatSound = useAudio("/storage/sounds/cheat.mp3", 0.5);
 
     const [cookies, setCookie] = useCookies([
         "preConsentGiven",
@@ -77,7 +80,7 @@ export default function Home() {
                 isOpen={showPassedModal}
                 onClose={() => setShowPassedModal(false)}
                 onSuccess={() => console.log("")}
-                selectSound={selectSound}
+                selectSound={cheatSound}
                 passedSound={passedSound}
             />
             {cookies.playIntro && !cookies.introPlayed ? (
@@ -93,6 +96,8 @@ export default function Home() {
                     <About hoverSound={hoverSound} />
                     <Jobs hoverSound={hoverSound} />
                     <Skills hoverSound={hoverSound} />
+                    <Experience hoverSound={hoverSound} />
+                    <Contact hoverSound={hoverSound} selectSound={selectSound} />
                 </div>
             )}
         </>
