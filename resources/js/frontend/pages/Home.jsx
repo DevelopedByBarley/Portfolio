@@ -10,6 +10,7 @@ import { GTAHeader } from "../components/GTAHeader";
 import { About } from "../components/About";
 import { useCheat } from "../hooks/useCheat";
 import CheatModal from "../components/CheatModal";
+import { Jobs } from "../components/Jobs";
 
 export default function Home() {
     const [isPreConsentShown, setIsPreConsentShown] = useState(true);
@@ -89,6 +90,7 @@ export default function Home() {
                     <GTAHeader />
                     <Menu />
                     <About hoverSound={hoverSound} />
+                    <Jobs hoverSound={hoverSound} />
                 </div>
             )}
         </>
