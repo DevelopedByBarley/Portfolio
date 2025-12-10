@@ -37,7 +37,7 @@ export default function Navbar({ hoverSound, selectSound, isTouchDevice }) {
         "relative px-3 py-2 text-sm font-semibold tracking-[0.12em] uppercase transition cursor-none";
 
     return (
-        <nav className="sticky top-0 z-40 bg-main-light-dark/90 backdrop-blur border-b border-black/30 cursor-none ">
+        <nav className="fixed w-screen top-0 z-40 bg-main-light-dark/90 backdrop-blur border-b border-black/30 cursor-none ">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="flex h-16 items-center justify-between gap-4">
                     <div className="flex items-center gap-2 font-custom">
