@@ -75,7 +75,7 @@ export const PreConsent = ({
                                                 !prev.audioPermission,
                                         }))
                                     }
-                                    className="border-2 border-main-orange bg-main-dark p-6 hover:border-light-yellow transition-all duration-300 cursor-pointer group"
+                                    className="border-2 border-main-orange bg-main-dark p-6 hover:border-light-yellow transition-all duration-300 group"
                                 >
                                     <div className="flex items-start gap-4">
                                         <div className="mt-1">
@@ -132,7 +132,7 @@ export const PreConsent = ({
                                             playIntro: !prev.playIntro,
                                         }))
                                     }
-                                    className="border-2 border-main-orange bg-main-dark p-6 hover:border-light-yellow transition-all duration-300 cursor-pointer group"
+                                    className="border-2 border-main-orange bg-main-dark p-6 hover:border-light-yellow transition-all duration-300 group"
                                 >
                                     <div className="flex items-start gap-4">
                                         <div className="mt-1">

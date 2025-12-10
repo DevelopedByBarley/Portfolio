@@ -128,7 +128,7 @@ export default function AdminNavbar() {
                                             <button
                                                 type="button"
                                                 onClick={toggleProfileMenu} // Profil menü toggle
-                                                className="cursor-pointer w-full text-start flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:text-neutral-200"
+                                                className="w-full text-start flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:text-neutral-200"
                                                 aria-expanded={profileOpen}
                                                 aria-controls="account-accordion-sub-1-collapse-1"
                                             >
@@ -161,7 +161,7 @@ export default function AdminNavbar() {
                                                     <li>
                                                         <button
                                                             onClick={logout}
-                                                            className="flex items-center cursor-pointer gap-x-1 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:text-neutral-200 w-full text-left"
+                                                            className="flex items-center gap-x-1 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:text-neutral-200 w-full text-left"
                                                         >
                                                             <svg
                                                                 xmlns=""

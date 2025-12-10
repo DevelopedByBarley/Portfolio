@@ -81,14 +81,14 @@ export const Skills = ({ hoverSound, selectSound, isTouchDevice }) => {
 
     return (
         <div className="bg-main-dark" id="skills">
-            <div className="text-center py-10">
-                <h2 className="font-custom text-7xl text-white">SKILLS</h2>
-                <p className="text-lg text-white/80 mt-2">Technologiai stackem</p>
+            <div className="text-center py-12 md:py-16 px-4">
+                <h2 className="font-custom text-5xl sm:text-6xl md:text-7xl text-white">SKILLS</h2>
+                <p className="text-base sm:text-lg text-white/80 mt-2">Technológiai stackem</p>
             </div>
 
-            <div className="min-h-[500px] flex flex-col  items-center">
-                <div className="md:grid grid-cols-2 container mx-auto max-w-7xl">
-                    <div className="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-4 mx-auto">
+            <div className="min-h-[400px] md:min-h-[500px] flex flex-col items-center pb-12 md:pb-16">
+                <div className="md:grid grid-cols-1 md:grid-cols-2 container mx-auto max-w-7xl px-4 gap-6">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 mb-8 md:mb-0">
                         {skills.map((skill) => (
                             <div
                                 key={skill.name}
@@ -103,48 +103,48 @@ export const Skills = ({ hoverSound, selectSound, isTouchDevice }) => {
                                     }
                                     setCurrentSkill(skill);
                                 }}
-                                className={`flex flex-col items-center m-2 h-30 w-30 border-5 ${currentSkill.name === skill.name ? "border-main-orange bg-main-orange/10" : "border-main-orange/40"} hover:border-main-orange hover:bg-main-orange/10 hover:shadow-[0_12px_30px_rgba(0,0,0,0.35)] transition duration-300 cursor-pointer p-4`}
+                                className={`flex flex-col items-center justify-center aspect-square border-4 ${currentSkill.name === skill.name ? "border-main-orange bg-main-orange/10" : "border-main-orange/40"} hover:border-main-orange hover:bg-main-orange/10 hover:shadow-[0_12px_30px_rgba(0,0,0,0.35)] transition duration-300 p-3 sm:p-4`}
                             >
                                 {skill.imgSrc ? (
                                     <img
                                         src={skill.imgSrc}
                                         alt={skill.name}
-                                        className="w-16 h-16 mb-3 drop-shadow-[0_8px_22px_rgba(0,0,0,0.45)]"
+                                        className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 mb-2 drop-shadow-[0_8px_22px_rgba(0,0,0,0.45)]"
                                     />
                                 ) : (
-                                    <span className="text-main-orange text-4xl mb-3 drop-shadow-[0_8px_22px_rgba(0,0,0,0.45)]">
+                                    <span className="text-main-orange text-2xl sm:text-3xl md:text-4xl mb-2 drop-shadow-[0_8px_22px_rgba(0,0,0,0.45)]">
                                         <i className={skill.iconClass} aria-hidden="true" />
                                     </span>
                                 )}
-                                <h3 className="text-md font-semibold mb-2 text-white text-center ">
+                                <h3 className="text-xs sm:text-sm md:text-base font-semibold text-white text-center leading-tight">
                                     {skill.name}
                                 </h3>
                             </div>
                         ))}
                     </div>
 
-                    <div className="pl-6 pr-2 flex items-center">
+                    <div className="w-full md:pl-6 md:pr-2 flex items-center">
                         <div className="w-full h-full">
                             {currentSkill ? (
-                                <div className="flex h-full flex-col items-center justify-center text-center gap-4 p-5 bg-main-dark/70 shadow-[0_12px_32px_rgba(0,0,0,0.20)]">
+                                <div className="flex h-full flex-col items-center justify-center text-center gap-4 p-4 sm:p-5 bg-main-dark/70 border border-main-orange/20 rounded-xl md:rounded-none md:border-none shadow-[0_12px_32px_rgba(0,0,0,0.20)]">
                                     <div className="flex-shrink-0">
                                         {currentSkill.imgSrc ? (
                                             <img
                                                 src={currentSkill.imgSrc}
                                                 alt={currentSkill.name}
-                                                className="w-14 h-14 drop-shadow-[0_10px_26px_rgba(0,0,0,0.45)]"
+                                                className="w-12 h-12 sm:w-14 sm:h-14 drop-shadow-[0_10px_26px_rgba(0,0,0,0.45)]"
                                             />
                                         ) : (
-                                            <span className="text-main-orange text-5xl drop-shadow-[0_10px_26px_rgba(0,0,0,0.45)]">
+                                            <span className="text-main-orange text-4xl sm:text-5xl drop-shadow-[0_10px_26px_rgba(0,0,0,0.45)]">
                                                 <i className={currentSkill.iconClass} aria-hidden="true" />
                                             </span>
                                         )}
                                     </div>
-                                    <div className="space-y-7">
-                                        <h3 className="text-5xl font-bold text-main-orange font-custom">
+                                    <div className="space-y-4 sm:space-y-6">
+                                        <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-main-orange font-custom">
                                             {currentSkill.name}
                                         </h3>
-                                        <p className="text-white/80 leading-relaxed">
+                                        <p className="text-sm sm:text-base text-white/80 leading-relaxed">
                                             {currentSkill.description}
                                         </p>
                                     </div>

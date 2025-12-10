@@ -155,7 +155,7 @@ export const Menu = ({ onSelect = (item) => { } }) => {
                             stroke="rgba(15,15,15,0.6)"
                             strokeWidth="1.5"
                             style={{ opacity: hoveredIndex === index ? 0.95 : 0.4 }}
-                            className="transition-opacity duration-300 cursor-pointer"
+                            className="transition-opacity duration-300 cursor-none"
                             onMouseEnter={() => {
                                 setHoveredIndex(index)
                             }}

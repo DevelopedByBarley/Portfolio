@@ -14,6 +14,8 @@ import { Jobs } from "../components/Jobs";
 import { Skills } from "../components/Skills";
 import { Experience } from "../components/Experience";
 import { Contact } from "../components/Contact";
+import { ToTop } from "../components/ToTop";
+import Navbar from "../components/Navbar";
 
 export default function Home() {
     const [isPreConsentShown, setIsPreConsentShown] = useState(true);
@@ -84,7 +86,7 @@ export default function Home() {
     }; */
 
     return (
-        <>
+        <div className="cursor-none">
             <CheatModal
                 isOpen={showPassedModal}
                 onClose={() => setShowPassedModal(false)}
@@ -99,16 +101,51 @@ export default function Home() {
                     id="top"
                     class="relative overflow-hidden before:absolute before:top-0 before:start-1/2 before:bg-[url('https://preline.co/assets/svg/examples/squared-bg-element.svg')] dark:before:bg-[url('https://preline.co/assets/svg/examples-dark/squared-bg-element.svg')] before:bg-no-repeat before:bg-top before:size-full before:-z-1 before:transform before:-translate-x-1/2"
                 >
+
                     <Scene passedSound={passedSound} />
+                    <Navbar hoverSound={hoverSound} selectSound={selectSound} isTouchDevice={isTouchDevice} />
                     <GTAHeader />
                     <Menu />
-                    <About hoverSound={hoverSound} selectSound={selectSound} isTouchDevice={isTouchDevice}/>
-                    <Jobs hoverSound={hoverSound} selectSound={selectSound} isTouchDevice={isTouchDevice}/>
+                    <About hoverSound={hoverSound} selectSound={selectSound} isTouchDevice={isTouchDevice} />
+                    <Jobs hoverSound={hoverSound} selectSound={selectSound} isTouchDevice={isTouchDevice} />
                     <Skills hoverSound={hoverSound} selectSound={selectSound} isTouchDevice={isTouchDevice} />
-                    <Experience hoverSound={hoverSound} selectSound={selectSound}  isTouchDevice={isTouchDevice}/>
-                    <Contact hoverSound={hoverSound} selectSound={selectSound} isTouchDevice={isTouchDevice}/>
+                    <Experience hoverSound={hoverSound} selectSound={selectSound} isTouchDevice={isTouchDevice} />
+                    <Contact hoverSound={hoverSound} selectSound={selectSound} isTouchDevice={isTouchDevice} />
+
+                    <ToTop />
+                    <Cursor isTouchDevice={isTouchDevice} />
                 </div>
             )}
-        </>
+        </div>
     );
 }
+
+// Source - https://stackoverflow.com/a
+// Posted by awesome webber
+// Retrieved 2025-12-10, License - CC BY-SA 4.0
+
+
+function Cursor({ isTouchDevice }) {
+    if (isTouchDevice) {
+        return null;
+    }
+
+    const [x, setX] = useState(0);
+    const [y, setY] = useState(0);
+
+    const logMousePosition = (e) => {
+        setX(e.clientX - 15);
+        setY(e.clientY - 13);
+    };
+
+    useEffect(() => {
+        document.addEventListener("mousemove", logMousePosition);
+
+        return () => {
+            document.removeEventListener("mousemove", logMousePosition);
+        };
+    }, []);
+
+    return <span style={{ top: y + "px", left: x + "px" }} className=" border-main-orange border-2 h-10 w-10 rounded-full fixed pointer-events-none z-[9999]"></span>;
+}
+

@@ -51,18 +51,18 @@ export const Experience = ({ hoverSound, selectSound }) => {
     ];
 
     return (
-        <section id="experience" className="relative bg-main-dark text-white py-20 overflow-hidden">
+        <section id="experience" className="relative bg-main-dark text-white py-16 md:py-20 overflow-hidden">
 
 
-            <div className="max-w-7xl mx-auto px-6 space-y-12 relative">
-                <div className="text-center space-y-3">
-                    <p className="tracking-[0.35em] text-xs text-white/60 uppercase">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-10 md:space-y-12 relative">
+                <div className="text-center space-y-2 md:space-y-3">
+                    <p className="tracking-[0.3em] sm:tracking-[0.35em] text-xs text-white/60 uppercase">
                         Mission Log · GTA vibe
                     </p>
-                    <h2 className="font-custom text-6xl text-white drop-shadow-[0_8px_30px_rgba(0,0,0,0.55)]">
+                    <h2 className="font-custom text-4xl sm:text-5xl md:text-6xl text-white drop-shadow-[0_8px_30px_rgba(0,0,0,0.55)]">
                         EXPERIENCE
                     </h2>
-                    <p className="text-white/75 text-sm max-w-2xl mx-auto">
+                    <p className="text-white/75 text-xs sm:text-sm max-w-2xl mx-auto px-4">
                         Kronológia, mint a GTA küldetéslista: minden állomás saját wanted szinttel, badge-ekkel és jutalommal.
                     </p>
                 </div>
@@ -70,11 +70,11 @@ export const Experience = ({ hoverSound, selectSound }) => {
                 <div className="relative max-w-5xl mx-auto">
                     <div className="hidden md:block absolute left-10 top-0 bottom-0 w-1 bg-gradient-to-b from-main-orange via-main-orange/50 to-transparent rounded-full blur-[1px]" />
 
-                    <div className="space-y-10">
+                    <div className="space-y-8 md:space-y-10">
                         {experiences.map((exp, index) => (
                             <article
                                 key={`${exp.company}-${exp.role}`}
-                                className="relative md:pl-12 md:pl-28"
+                                className="relative md:pl-20 lg:pl-28"
                                 onMouseEnter={() => {
                                     if (cookies.audioPermission) {
                                         hoverSound.play();
@@ -93,21 +93,21 @@ export const Experience = ({ hoverSound, selectSound }) => {
                                     </span>
                                 </div>
 
-                                <div className="relative overflow-hidden bg-main-light-dark/80 border border-main-orange/30 rounded-2xl p-6 shadow-[0_18px_42px_rgba(0,0,0,0.35)] transition duration-300 group hover:-translate-y-1 hover:border-main-orange hover:shadow-[0_22px_50px_rgba(0,0,0,0.45)]">
+                                <div className="relative overflow-hidden bg-main-light-dark/80 border border-main-orange/30 rounded-xl md:rounded-2xl p-4 sm:p-5 md:p-6 shadow-[0_18px_42px_rgba(0,0,0,0.35)] transition duration-300 group hover:-translate-y-1 hover:border-main-orange hover:shadow-[0_22px_50px_rgba(0,0,0,0.45)]">
                                     <div className="absolute inset-0 opacity-50 bg-[radial-gradient(circle_at_25%_20%,rgba(249,115,22,0.15),transparent_40%),radial-gradient(circle_at_80%_0%,rgba(255,199,44,0.12),transparent_30%)] pointer-events-none" />
 
-                                    <div className="flex flex-wrap items-start justify-between gap-4 relative">
+                                    <div className="flex flex-wrap items-start justify-between gap-3 md:gap-4 relative">
                                         <div className="space-y-2">
                                             <div className="flex items-center gap-2">
-                                                <span className="text-[11px] uppercase tracking-[0.25em] text-black bg-main-orange px-3 py-1 rounded-full shadow-[0_6px_18px_rgba(249,115,22,0.65)]">
+                                                <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.2em] sm:tracking-[0.25em] text-black bg-main-orange px-2.5 sm:px-3 py-1 rounded-full shadow-[0_6px_18px_rgba(249,115,22,0.65)]">
                                                     Mission #{String(index + 1).padStart(2, "0")}
                                                 </span>
 
                                             </div>
-                                            <h3 className="text-2xl font-bold drop-shadow-[0_4px_12px_rgba(0,0,0,0.35)]">
+                                            <h3 className="text-lg sm:text-xl md:text-2xl font-bold drop-shadow-[0_4px_12px_rgba(0,0,0,0.35)] leading-tight">
                                                 {exp.role}
                                             </h3>
-                                            <p className="text-white/70 font-semibold">{exp.company}</p>
+                                            <p className="text-sm sm:text-base text-white/70 font-semibold">{exp.company}</p>
                                         </div>
 
                                         <div className="flex items-center gap-2">

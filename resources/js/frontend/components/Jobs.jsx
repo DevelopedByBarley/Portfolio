@@ -311,10 +311,12 @@ const renderMidDeviceJobs = (handleJobClick, hoverSound, isTouchDevice) => {
                 gtaJobs.map((job, index) => (
                     <article
                         key={job.title}
-                        className={`relative group min-h-[400px] col-span-${job.colSpan.md} cursor-pointer`}
+                        className={`relative group min-h-[400px] col-span-${job.colSpan.md} cursor-none`}
                         style={{ transform: `rotate(${job.tilt}deg)` }}
                         onClick={() => handleJobClick(job)}
-                        onMouseEnter={() => hoverSound?.play && !isTouchDevice && hoverSound.play()}
+                        onMouseEnter={() => {
+                            hoverSound?.play && !isTouchDevice && hoverSound.play();
+                        }}
                     >
                         <div className="absolute inset-[-5px] translate-x-0 translate-y-2 bg-black shadow-[0_18px_50px_rgba(0,0,0,0.45)]" style={{
                             clipPath: job.clipPath?.md || "none",
@@ -360,7 +362,7 @@ const renderSmallDeviceJobs = (handleJobClick, hoverSound, isTouchDevice) => {
                 {gtaJobs.map((job, index) => (
                     <article
                         key={job.title}
-                        className={`relative group min-h-[400px] col-span-${job.colSpan} cursor-pointer`}
+                        className={`relative group min-h-[400px] col-span-${job.colSpan} cursor-none`}
                         style={{ transform: `rotate(${job.tilt}deg)` }}
                         onClick={() => handleJobClick(job)}
                         onMouseEnter={() => hoverSound?.play && !isTouchDevice && hoverSound.play()}
