@@ -94,7 +94,7 @@ export default function Home() {
                     <GTAHeader />
                     <Menu />
                     <About hoverSound={hoverSound} />
-                    <Jobs hoverSound={hoverSound} />
+                    <Jobs hoverSound={hoverSound} selectSound={selectSound} />
                     <Skills hoverSound={hoverSound} />
                     <Experience hoverSound={hoverSound} />
                     <Contact hoverSound={hoverSound} selectSound={selectSound} />

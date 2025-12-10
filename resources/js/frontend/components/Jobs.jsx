@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import { JobModal } from './JobModal';
+
 const gtaJobs = [
     {
         title: "Night Shift Dashboard",
@@ -22,6 +25,17 @@ const gtaJobs = [
             xxl: 0
         },
         tagline: "Valós idejű riportok és szolgálati ütemezés egyetlen panelen.",
+        description: "Egy átfogó dashboard alkalmazás, amely valós időben jeleníti meg a napi riportokat, szolgálati beosztásokat és statisztikákat. A rendszer Laravel backend és React frontend kombinációjával készült, lehetővé téve a gyors adatfrissítést és felhasználóbarát kezelést.",
+        image: "/storage/projects/nightshift1.jpg",
+        technologies: ["Laravel", "React", "MySQL", "Tailwind CSS", "WebSockets"],
+        features: [
+            "Valós idejű riport megjelenítés",
+            "Szolgálati beosztás kezelése",
+            "Statisztikai dashboard",
+            "Felhasználói jogosultságkezelés",
+            "Mobilbarát design"
+        ],
+        url: "https://nightshift-demo.example.com"
     },
     {
         title: "Heist Planner",
@@ -46,6 +60,17 @@ const gtaJobs = [
         },
         tilt: 0,
         tagline: "Animált timeline-okkal követhető többfázisú projektterv.",
+        description: "Interaktív projektmenedzsment eszköz animált timeline-okkal, amely lehetővé teszi a komplex projektek fázisokra bontását és vizuális követését. A GSAP animációs könyvtár segítségével megvalósított sima átmenetek élvezhetővé teszik a projekt előrehaladásának nyomon követését.",
+        image: "/storage/projects/heist1.jpg",
+        technologies: ["React", "GSAP", "Node.js", "MongoDB"],
+        features: [
+            "Animált projekt timeline",
+            "Többfázisú tervezés",
+            "Drag & drop interfész",
+            "Csapattagok kezelése",
+            "Gantt chart nézet"
+        ],
+        url: "https://heistplanner.example.com"
     },
     {
         title: "Vice City Rentals",
@@ -71,6 +96,17 @@ const gtaJobs = [
         },
         tilt: 0,
         tagline: "Bérlési folyamat digitalizálása GTA vibe-os UI-val.",
+        description: "Modern ingatlan bérbeadási platform, amely digitalizálja a teljes bérlési folyamatot a szerződéskötéstől a fizetéskezelésen át a kommunikációig. Az Inertia.js segítségével SPA élményt nyújt Laravel háttérrel.",
+        image: "/storage/projects/rentals1.jpg",
+        technologies: ["Laravel", "Inertia.js", "Vue.js", "Stripe", "PostgreSQL"],
+        features: [
+            "Online szerződéskötés",
+            "Fizetéskezelés Stripe-pal",
+            "Bérlői portál",
+            "Karbantartási jegyek",
+            "Dokumentum管理"
+        ],
+        url: "https://vicerentals.example.com"
     },
     {
         title: "Chopper Tracker",
@@ -95,6 +131,17 @@ const gtaJobs = [
             xxl: 0
         },
         tagline: "Élő térképes követés és riasztások légi egységekhez.",
+        description: "Valós idejű térképes követőrendszer légi járművekhez, WebSocket alapú kommunikációval. A rendszer lehetővé teszi a flotta teljes körű nyomon követését, riasztások beállítását és útvonaltörténet megtekintését.",
+        image: "/storage/projects/chopper1.jpg",
+        technologies: ["Node.js", "WebSockets", "Redis", "Leaflet.js", "MongoDB"],
+        features: [
+            "Valós idejű GPS követés",
+            "Geofencing riasztások",
+            "Útvonaltörténet",
+            "Multi-device sync",
+            "Offline támogatás"
+        ],
+        url: "https://choppertracker.example.com"
     },
     {
         title: "Los Santos Market",
@@ -119,6 +166,17 @@ const gtaJobs = [
             xxl: 0
         },
         tagline: "E-kereskedelmi kirakat karakteres GTA színsémával.",
+        description: "Modern e-commerce webshop egyedi GTA ihlette dizájnnal. Az Alpine.js könnyedségével készült interaktív elemek és a Tailwind CSS segítségével megvalósított egyedi design tökéletes harmóniában.",
+        image: "/storage/projects/market1.jpg",
+        technologies: ["Alpine.js", "Tailwind CSS", "Laravel", "Stripe", "MySQL"],
+        features: [
+            "Kosár kezelés",
+            "Fizetési integráció",
+            "Termék szűrés",
+            "Wishlist funkció",
+            "Admin panel"
+        ],
+        url: "https://lsmarket.example.com"
     },
     {
         title: "Drift School",
@@ -143,6 +201,17 @@ const gtaJobs = [
             xl: 0,
             xxl: 0
         },
+        description: "Gamifikált online tanulási platform vezetéstechnikai képzésekhez. A rendszer játékos elemekkel teszi élvezetesebbé a tanulást, eredménytáblákkal és jelvényekkel motiválva a résztvevőket.",
+        image: "/storage/projects/drift1.jpg",
+        technologies: ["React", "Node.js", "PostgreSQL", "Canvas API"],
+        features: [
+            "Interaktív lekciók",
+            "Eredménytáblák",
+            "Jelvény rendszer",
+            "Videó modulok",
+            "Haladás nyomon követés"
+        ],
+        url: "https://driftschool.example.com"
     },
     {
         title: "Liberty Radio",
@@ -151,7 +220,6 @@ const gtaJobs = [
         color: "#8362d0", // violet
         tilt: 0,
         tagline: "Tematikus rádiólejátszó, playlist rotációval és analytics-szel.",
-
         colSpan: {
             sm: 0,
             md: 0,
@@ -168,10 +236,32 @@ const gtaJobs = [
             sm: "polygon(0 1%, 100% 5%, 100% 99%, 0 95%)",
             md: "polygon(0 1%, 100% 5%, 100% 99%, 0 100%)",
         },
+        description: "Online rádió streaming platform tematikus csatornákkal, playlist rotációval és részletes hallgatottsági statisztikákkal. A rendszer támogatja a zenei preferenciák alapján történő ajánlást is.",
+        image: "/storage/projects/radio1.jpg",
+        technologies: ["Node.js", "React", "Redis", "FFmpeg", "MongoDB"],
+        features: [
+            "Élő streaming",
+            "Playlist kezelés",
+            "Hallgatottsági analytics",
+            "Zene ajánló",
+            "Chat integráció"
+        ],
+        url: "https://libertyradio.example.com"
     },
 ];
 
-export const Jobs = () => {
+export const Jobs = ({ hoverSound, selectSound }) => {
+    const [selectedJob, setSelectedJob] = useState(null);
+
+    const handleJobClick = (job) => {
+        if (selectSound?.play) selectSound.play();
+        setSelectedJob(job);
+    };
+
+    const handleCloseModal = () => {
+        setSelectedJob(null);
+    };
+
     return (
         <section id="projects" className="bg-main-dark text-white py-20">
 
@@ -193,29 +283,37 @@ export const Jobs = () => {
                 <div className="relative">
                     <div className="absolute inset-y-0 left-[18%] hidden md:block w-1 bg-black/70" />
                     <div className="md:hidden">
-                        {renderSmallDeviceJobs()}
+                        {renderSmallDeviceJobs(handleJobClick, hoverSound)}
                     </div>
                     <div className="hidden md:block ">
-                        {renderMidDeviceJobs()}
+                        {renderMidDeviceJobs(handleJobClick, hoverSound)}
                     </div>
-
-
-
                 </div>
             </div>
+
+            {selectedJob && (
+                <JobModal
+                    job={selectedJob}
+                    onClose={handleCloseModal}
+                    hoverSound={hoverSound}
+                    selectSound={selectSound}
+                />
+            )}
         </section>
     );
 };
 
-const renderMidDeviceJobs = () => {
+const renderMidDeviceJobs = (handleJobClick, hoverSound) => {
     return (
         <div className="grid grid-cols-2 gap-2 max-w-7xl mx-auto px-6">
             {
                 gtaJobs.map((job, index) => (
                     <article
                         key={job.title}
-                        className={`relative group min-h-[400px] col-span-${job.colSpan.md}`}
+                        className={`relative group min-h-[400px] col-span-${job.colSpan.md} cursor-pointer`}
                         style={{ transform: `rotate(${job.tilt}deg)` }}
+                        onClick={() => handleJobClick(job)}
+                        onMouseEnter={() => hoverSound?.play && hoverSound.play()}
                     >
                         <div className="absolute inset-[-5px] translate-x-0 translate-y-2 bg-black shadow-[0_18px_50px_rgba(0,0,0,0.45)]" style={{
                             clipPath: job.clipPath?.md || "none",
@@ -235,7 +333,7 @@ const renderMidDeviceJobs = () => {
                                     </span>
                                     <span className="text-black/70">{`#0${index + 1}`}</span>
                                 </div>
-                                <h3 className="text-2xl sm:text-3xl font-bold drop-shadow-[0_4px_10px_rgba(0,0,0,0.35)]">
+                                <h3 className="font-custom text-2xl sm:text-3xl font-bold drop-shadow-[0_4px_10px_rgba(0,0,0,0.35)]">
                                     {job.title}
                                 </h3>
                                 <p className="text-sm font-semibold tracking-wide uppercase text-black/75">
@@ -254,15 +352,17 @@ const renderMidDeviceJobs = () => {
 }
 
 
-const renderSmallDeviceJobs = () => {
+const renderSmallDeviceJobs = (handleJobClick, hoverSound) => {
     return (
         <>
             <div className="grid grid-cols-1 max-w-7xl mx-auto px-6">
                 {gtaJobs.map((job, index) => (
                     <article
                         key={job.title}
-                        className={`relative group min-h-[400px] col-span-${job.colSpan}`}
+                        className={`relative group min-h-[400px] col-span-${job.colSpan} cursor-pointer`}
                         style={{ transform: `rotate(${job.tilt}deg)` }}
+                        onClick={() => handleJobClick(job)}
+                        onMouseEnter={() => hoverSound?.play && hoverSound.play()}
                     >
                         <div className="absolute inset-[-5px] translate-x-0 translate-y-2 bg-black shadow-[0_18px_50px_rgba(0,0,0,0.45)]" style={{
                             clipPath: job.clipPath?.sm || "none",
