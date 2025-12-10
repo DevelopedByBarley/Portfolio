@@ -250,7 +250,7 @@ const gtaJobs = [
     },
 ];
 
-export const Jobs = ({ hoverSound, selectSound }) => {
+export const Jobs = ({ hoverSound, selectSound, isTouchDevice }) => {
     const [selectedJob, setSelectedJob] = useState(null);
 
     const handleJobClick = (job) => {
@@ -283,10 +283,10 @@ export const Jobs = ({ hoverSound, selectSound }) => {
                 <div className="relative">
                     <div className="absolute inset-y-0 left-[18%] hidden md:block w-1 bg-black/70" />
                     <div className="md:hidden">
-                        {renderSmallDeviceJobs(handleJobClick, hoverSound)}
+                        {renderSmallDeviceJobs(handleJobClick, hoverSound, isTouchDevice)}
                     </div>
                     <div className="hidden md:block ">
-                        {renderMidDeviceJobs(handleJobClick, hoverSound)}
+                        {renderMidDeviceJobs(handleJobClick, hoverSound, isTouchDevice)}
                     </div>
                 </div>
             </div>
@@ -297,13 +297,14 @@ export const Jobs = ({ hoverSound, selectSound }) => {
                     onClose={handleCloseModal}
                     hoverSound={hoverSound}
                     selectSound={selectSound}
+                    isTouchDevice={isTouchDevice}
                 />
             )}
         </section>
     );
 };
 
-const renderMidDeviceJobs = (handleJobClick, hoverSound) => {
+const renderMidDeviceJobs = (handleJobClick, hoverSound, isTouchDevice) => {
     return (
         <div className="grid grid-cols-2 gap-2 max-w-7xl mx-auto px-6">
             {
@@ -313,7 +314,7 @@ const renderMidDeviceJobs = (handleJobClick, hoverSound) => {
                         className={`relative group min-h-[400px] col-span-${job.colSpan.md} cursor-pointer`}
                         style={{ transform: `rotate(${job.tilt}deg)` }}
                         onClick={() => handleJobClick(job)}
-                        onMouseEnter={() => hoverSound?.play && hoverSound.play()}
+                        onMouseEnter={() => hoverSound?.play && !isTouchDevice && hoverSound.play()}
                     >
                         <div className="absolute inset-[-5px] translate-x-0 translate-y-2 bg-black shadow-[0_18px_50px_rgba(0,0,0,0.45)]" style={{
                             clipPath: job.clipPath?.md || "none",
@@ -352,7 +353,7 @@ const renderMidDeviceJobs = (handleJobClick, hoverSound) => {
 }
 
 
-const renderSmallDeviceJobs = (handleJobClick, hoverSound) => {
+const renderSmallDeviceJobs = (handleJobClick, hoverSound, isTouchDevice) => {
     return (
         <>
             <div className="grid grid-cols-1 max-w-7xl mx-auto px-6">
@@ -362,7 +363,7 @@ const renderSmallDeviceJobs = (handleJobClick, hoverSound) => {
                         className={`relative group min-h-[400px] col-span-${job.colSpan} cursor-pointer`}
                         style={{ transform: `rotate(${job.tilt}deg)` }}
                         onClick={() => handleJobClick(job)}
-                        onMouseEnter={() => hoverSound?.play && hoverSound.play()}
+                        onMouseEnter={() => hoverSound?.play && !isTouchDevice && hoverSound.play()}
                     >
                         <div className="absolute inset-[-5px] translate-x-0 translate-y-2 bg-black shadow-[0_18px_50px_rgba(0,0,0,0.45)]" style={{
                             clipPath: job.clipPath?.sm || "none",

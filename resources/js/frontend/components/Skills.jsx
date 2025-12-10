@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useCookies } from "react-cookie";
 
-export const Skills = ({ hoverSound }) => {
+export const Skills = ({ hoverSound, selectSound, isTouchDevice }) => {
     const [cookies] = useCookies(["audioPermission"]);
     const [currentSkill, setCurrentSkill] = useState({
         name: "HTML5",
@@ -93,12 +93,17 @@ export const Skills = ({ hoverSound }) => {
                             <div
                                 key={skill.name}
                                 onMouseEnter={() => {
-                                    if (cookies.audioPermission) {
+                                    if (cookies.audioPermission && !isTouchDevice) {
                                         hoverSound.play();
+                                    }
+                                }}
+                                onClick={() => {
+                                    if (cookies.audioPermission) {
+                                        selectSound.play();
                                     }
                                     setCurrentSkill(skill);
                                 }}
-                                className={`flex flex-col items-center m-2 h-30 w-30 border-2 ${currentSkill.name === skill.name ? "border-main-orange bg-main-orange/10" : "border-main-orange/40"} hover:border-main-orange hover:bg-main-orange/10 hover:shadow-[0_12px_30px_rgba(0,0,0,0.35)] transition duration-300 cursor-pointer p-4`}
+                                className={`flex flex-col items-center m-2 h-30 w-30 border-5 ${currentSkill.name === skill.name ? "border-main-orange bg-main-orange/10" : "border-main-orange/40"} hover:border-main-orange hover:bg-main-orange/10 hover:shadow-[0_12px_30px_rgba(0,0,0,0.35)] transition duration-300 cursor-pointer p-4`}
                             >
                                 {skill.imgSrc ? (
                                     <img

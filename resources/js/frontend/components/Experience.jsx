@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useCookies } from "react-cookie";
 
-export const Experience = ({ hoverSound }) => {
+export const Experience = ({ hoverSound, selectSound }) => {
     const [cookies] = useCookies(["audioPermission"]);
     const [currentExpIndex, setCurrentExpIndex] = useState(null);
 
@@ -74,15 +74,20 @@ export const Experience = ({ hoverSound }) => {
                         {experiences.map((exp, index) => (
                             <article
                                 key={`${exp.company}-${exp.role}`}
-                                className="relative pl-12 md:pl-28"
+                                className="relative md:pl-12 md:pl-28"
                                 onMouseEnter={() => {
                                     if (cookies.audioPermission) {
                                         hoverSound.play();
                                     }
+                                }}
+                                onClick={() => {
+                                    if (cookies.audioPermission) {
+                                        selectSound.play();
+                                    }
                                     setCurrentExpIndex(index);
                                 }}
                             >
-                                <div className={`${currentExpIndex === index ? "bg-main-orange" : ""} transition-all duration-600 absolute left-4 md:left-7 top-10 w-8 h-8 rounded-full border-2 border-main-orange bg-main-dark flex items-center justify-center shadow-[0_0_20px_rgba(249,115,22,0.65)]`}>
+                                <div className={`${currentExpIndex === index ? "bg-main-orange" : ""} hidden md:flex transition-all duration-600 absolute left-4 md:left-7 top-10 w-8 h-8 rounded-full border-2 border-main-orange bg-main-dark items-center justify-center shadow-[0_0_20px_rgba(249,115,22,0.65)]`}>
                                     <span className="text-[11px] font-semibold">
                                         {index + 1}
                                     </span>

@@ -27,6 +27,15 @@ export default function Home() {
     const passedSound = useAudio("/storage/sounds/passed.mp3", 0.5);
     const cheatSound = useAudio("/storage/sounds/cheat.mp3", 0.5);
 
+    const isTouchDevice =
+        typeof window !== "undefined" &&
+        (window.matchMedia("(pointer: coarse)").matches || "ontouchstart" in window); const [currentSkill, setCurrentSkill] = useState({
+            name: "HTML5",
+            iconClass: "bi bi-filetype-html",
+            description:
+                "Szemantikus, reszponziv markup SEO- es hozzaferhetoseg-fokusszal. Tiszta DOM-struktura, ARIA-label, mikrocopy es UX-szempontbol rendezett űrlapok, hibajelzesekkel.",
+        });
+
     const [cookies, setCookie] = useCookies([
         "preConsentGiven",
         "audioPermission",
@@ -93,11 +102,11 @@ export default function Home() {
                     <Scene passedSound={passedSound} />
                     <GTAHeader />
                     <Menu />
-                    <About hoverSound={hoverSound} />
-                    <Jobs hoverSound={hoverSound} selectSound={selectSound} />
-                    <Skills hoverSound={hoverSound} />
-                    <Experience hoverSound={hoverSound} />
-                    <Contact hoverSound={hoverSound} selectSound={selectSound} />
+                    <About hoverSound={hoverSound} selectSound={selectSound} isTouchDevice={isTouchDevice}/>
+                    <Jobs hoverSound={hoverSound} selectSound={selectSound} isTouchDevice={isTouchDevice}/>
+                    <Skills hoverSound={hoverSound} selectSound={selectSound} isTouchDevice={isTouchDevice} />
+                    <Experience hoverSound={hoverSound} selectSound={selectSound}  isTouchDevice={isTouchDevice}/>
+                    <Contact hoverSound={hoverSound} selectSound={selectSound} isTouchDevice={isTouchDevice}/>
                 </div>
             )}
         </>

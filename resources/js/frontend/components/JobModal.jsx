@@ -1,4 +1,4 @@
-export const JobModal = ({ job, onClose, hoverSound, selectSound }) => {
+export const JobModal = ({ job, onClose, hoverSound, selectSound, isTouchDevice }) => {
     if (!job) return null;
 
     const handleClose = () => {
@@ -33,7 +33,7 @@ export const JobModal = ({ job, onClose, hoverSound, selectSound }) => {
                         </div>
                         <button
                             onClick={handleClose}
-                            onMouseEnter={() => hoverSound?.play && hoverSound.play()}
+                            onMouseEnter={() => hoverSound?.play && !isTouchDevice && hoverSound.play()}
                             className="text-main-orange hover:text-light-yellow transition-colors text-3xl font-bold w-10 h-10 flex items-center justify-center border-2 border-main-orange hover:border-light-yellow"
                         >
                             ×
@@ -98,7 +98,7 @@ export const JobModal = ({ job, onClose, hoverSound, selectSound }) => {
                     <div className="flex gap-4 pt-4 border-t-2 border-main-orange/30">
                         <button
                             onClick={handleClose}
-                            onMouseEnter={() => hoverSound?.play && hoverSound.play()}
+                            onMouseEnter={() => hoverSound?.play && !isTouchDevice && hoverSound.play()}
                             className="flex-1 bg-main-dark hover:bg-main-light-dark text-white border-2 border-main-orange py-3 px-6 font-custom text-xl transition-all hover:shadow-[0_0_20px_rgba(254,164,0,0.4)]"
                         >
                             VISSZA
@@ -106,7 +106,7 @@ export const JobModal = ({ job, onClose, hoverSound, selectSound }) => {
                         {job.url && (
                             <button
                                 onClick={handleVisitSite}
-                                onMouseEnter={() => hoverSound?.play && hoverSound.play()}
+                                onMouseEnter={() => hoverSound?.play && !isTouchDevice && hoverSound.play()}
                                 className="flex-1 bg-main-orange hover:bg-light-yellow text-main-dark border-2 border-main-dark py-3 px-6 font-custom text-xl transition-all hover:shadow-[0_0_20px_rgba(254,164,0,0.6)]"
                             >
                                 MEGTEKINTÉS
